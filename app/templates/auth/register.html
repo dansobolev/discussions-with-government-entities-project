@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico"/>
+</head>
+<body>
+    <div class = "registration">
+        <div class = "registration__container">
+            <div class = "auth__box__maintitle">Регистрация пользователя</div>
+        <div class = "auth__box__subtitle">Все поля обязательны к заполнению</div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regname" placeholder="Имя">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regsurname" placeholder="Фамилия">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regpatronymic" placeholder="Отчество">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regemail" placeholder="Email">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regphone" placeholder="Телефон">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input id = "regusername" placeholder="Логин">
+            </div>
+            <div class = "registration__item">
+                <div class = "registration__item__text"></div>
+                <input type="password" id = "regpass" placeholder="Пароль">
+            </div>
+            <div class = "registration__item">
+                <input type="file" name="images" id="images" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg" />
+            </div>
+            <button class = "registration__btn" onclick = "sendRegData()">Отправить</button>
+        </div>
+    </div>
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type = "text/javascript" src = "/static/js/registration.js"></script>
+</html>

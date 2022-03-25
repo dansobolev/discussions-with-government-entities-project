@@ -1,0 +1,44 @@
+[
+  {
+    "model": "User",
+    "fields": {
+      "id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "login": "egor",
+      "password": "test",
+      "email": "egor@gmail.com",
+      "phone_number": "+79999999999",
+      "firstname": "egor",
+      "lastname": "egor",
+      "middlename": "egor",
+      "role_type": 1
+    }
+  },
+  {
+    "model": "User",
+    "fields": {
+      "id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "login": "oleg",
+      "password": "test",
+      "email": "oleg@gmail.com",
+      "phone_number": "+79999999999",
+      "firstname": "oleg",
+      "lastname": "oleg",
+      "middlename": "oleg",
+      "role_type": 1
+    }
+  },
+  {
+    "model": "User",
+    "fields": {
+      "id": "455a1143-b058-4db8-b13a-d4aca55616ed",
+      "login": "zheka",
+      "password": "test",
+      "email": "zheka@gmail.com",
+      "phone_number": "+79999999999",
+      "firstname": "zheka",
+      "lastname": "zheka",
+      "middlename": "zheka",
+      "role_type": 1
+    }
+  }
+]

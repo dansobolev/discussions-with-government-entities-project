@@ -1,0 +1,60 @@
+[
+  {
+    "model": "Discussion",
+    "fields": {
+      "id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "name": "Discussion created by Egor",
+      "creator_id": "e7defe4a-5354-4a04-afe4-af6a3009544d"
+    }
+  },
+  {
+    "model": "DiscussionParticipantRelation",
+    "fields": {
+      "discussion_id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "participant_id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "inviter_id": "e7defe4a-5354-4a04-afe4-af6a3009544d"
+    }
+  },
+  {
+    "model": "DiscussionParticipantRelation",
+    "fields": {
+      "discussion_id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "participant_id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "inviter_id": "e7defe4a-5354-4a04-afe4-af6a3009544d"
+    }
+  },
+
+
+  {
+    "model": "Discussion",
+    "fields": {
+      "id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "name": "Discussion created by Oleg",
+      "creator_id": "a998bc47-633c-49d2-97ca-0f4087487498"
+    }
+  },
+  {
+    "model": "DiscussionParticipantRelation",
+    "fields": {
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "participant_id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "inviter_id": "a998bc47-633c-49d2-97ca-0f4087487498"
+    }
+  },
+  {
+    "model": "DiscussionParticipantRelation",
+    "fields": {
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "participant_id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "inviter_id": "a998bc47-633c-49d2-97ca-0f4087487498"
+    }
+  },
+  {
+    "model": "DiscussionParticipantRelation",
+    "fields": {
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "participant_id": "455a1143-b058-4db8-b13a-d4aca55616ed",
+      "inviter_id": "e7defe4a-5354-4a04-afe4-af6a3009544d"
+    }
+  }
+]

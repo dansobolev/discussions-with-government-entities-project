@@ -1,0 +1,69 @@
+[
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "7ed2bbd1-5ad5-416f-806f-cd06fb87eb2f",
+      "author_id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "discussion_id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "comment_text": "Comment by Egor"
+    }
+  },
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "c0e700eb-9c39-4f03-b1c5-c15f3bac3fa4",
+      "author_id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "discussion_id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "comment_text": "Comment by Oleg"
+    }
+  },
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "c679a9da-0c06-4341-aa63-e7e55c58b67b",
+      "author_id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "discussion_id": "98f7622c-ec16-487c-a9ae-81dc916d8694",
+      "comment_text": "Comment by Oleg replied to comment by Zheka",
+      "replied_message_id": "7ed2bbd1-5ad5-416f-806f-cd06fb87eb2f"
+    }
+  },
+
+
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "76051c28-8ad6-4bbb-b727-4723bff35795",
+      "author_id": "a998bc47-633c-49d2-97ca-0f4087487498",
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "comment_text": "Comment by Oleg"
+    }
+  },
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "737d54db-7921-43c3-8d61-549eb1200159",
+      "author_id": "455a1143-b058-4db8-b13a-d4aca55616ed",
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "comment_text": "Comment by Zheka"
+    }
+  },
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "8f7d6714-bf44-4113-b8c9-293c8ae2e4a2",
+      "author_id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "comment_text": "Comment by Egor"
+    }
+  },
+  {
+    "model": "DiscussionComment",
+    "fields": {
+      "id": "cd6aa7a0-64a8-4de1-a4d5-2dc3317d4810",
+      "author_id": "e7defe4a-5354-4a04-afe4-af6a3009544d",
+      "discussion_id": "d8cb23ec-8d4a-48b7-8ae7-75b7d6742985",
+      "comment_text": "Comment by Egor with reply to Zheka's comment",
+      "replied_message_id": "737d54db-7921-43c3-8d61-549eb1200159"
+    }
+  }
+]
