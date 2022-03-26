@@ -3,11 +3,24 @@ import json
 import uuid
 
 from app.db.models import UserPasswordResetLink
+from app.db.queries import get_user_by_login
+from app.utils.password.hash import check_hash
 
 
 async def test_create_user_with_existed_login_and_email(client, user, user_data):
     response = await client.post('/register', data=json.dumps(user_data))
     assert response.status == 409
+
+
+async def test_create_user_with_valid_data(client, user_data):
+    user_data.update({'password': 'test_password'})
+    response = await client.post('/register', data=json.dumps(user_data))
+    assert response.status == 201
+
+    user_db = await get_user_by_login(login=user_data['login'])
+    assert user_db.login == user_data['login']
+
+    await user_db.delete()
 
 
 async def test_login_with_non_existed_login(client):
@@ -36,6 +49,9 @@ async def test_user_change_password_successful(client, user):
          'new_password_2': new_password_2}
     ))
     assert response.status == 200
+
+    user_db = await get_user_by_login(login=user.login)
+    check_hash(new_password_1, user_db.password)
 
 
 async def test_user_different_passwords(client, user):
@@ -95,6 +111,11 @@ async def test_create_password_reset_link_for_authorized_user(client, user):
         {'email': user.email}
     ))
     assert response.status == 200
+
+    reset_link = \
+        await UserPasswordResetLink.query.\
+            where(UserPasswordResetLink.user_id == user.id).gino.first()
+    assert reset_link.user_id == user.id
 
 
 async def test_check_if_reset_link_is_valid(client, user, password_reset_link):
