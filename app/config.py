@@ -9,6 +9,7 @@ load_dotenv()
 class Config:
     # common
     BASE_DIR = pathlib.Path(__file__).parent
+    DEV_MODE = os.getenv('DEV_MODE', False)
     TESTING = False
 
     # database

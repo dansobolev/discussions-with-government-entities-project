@@ -1,5 +1,6 @@
 from aiohttp import web
 from aiohttp_security import authorized_userid
+from aiohttp_apispec import docs, request_schema, response_schema
 from marshmallow import EXCLUDE
 
 from app.auth.permissions import permissions_required, ProjectPermissions
@@ -17,6 +18,13 @@ from app.uploads import add_entity_attachments
 routes = web.RouteTableDef()
 
 
+@docs(
+    tags=['Discussions'],
+    summary='Create discussion',
+    desciption='Method created discussion with specific name'
+)
+@request_schema(DiscussionSchema(only=('name',)))
+@response_schema(DiscussionSchema())
 @routes.post('/discussions')
 async def create_discussion(request: web.Request) -> web.Response:
     user_id = await authorized_userid(request)

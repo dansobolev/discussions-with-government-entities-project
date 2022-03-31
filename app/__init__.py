@@ -8,6 +8,7 @@ from aiohttp_session import setup as setup_session
 from aiohttp_session.cookie_storage import EncryptedCookieStorage
 from aiohttp_security import setup as setup_security
 from aiohttp_security import SessionIdentityPolicy
+from aiohttp_apispec import setup_aiohttp_apispec
 import aiohttp_jinja2
 from cryptography import fernet
 import jinja2
@@ -26,6 +27,13 @@ def create_app(config_: Config) -> web.Application:
     setup_routes(app)
     setup_middlewares(app)
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(str(config_.BASE_DIR) + '/templates'))
+    setup_aiohttp_apispec(
+        app=app,
+        title='Project docs',
+        version='v1',
+        url='/api/docs/swagger.json',
+        swagger_path='/api/docs',
+    )
 
     app.cleanup_ctx.append(cleanup_ctx)
 

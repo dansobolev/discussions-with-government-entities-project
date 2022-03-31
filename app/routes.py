@@ -9,6 +9,9 @@ from app.views.main import routes as index_routes
 
 def setup_routes(app: web.Application):
     app.add_routes([
-        web.static('/static', Config.STATIC_FOLDER),
         *user_routes, *post_routes, *upload_routes, *index_routes
     ])
+    if not Config.DEV_MODE:
+        app.add_routes([
+            web.static('/static', Config.STATIC_FOLDER),
+        ])
