@@ -57,7 +57,7 @@ def setup_middlewares(app):
         500: handle_500
     })
     app.middlewares.append(error_middleware)
-    app.middlewares.append(current_user_data())
+    # app.middlewares.append(current_user_data())
 
 
 def json_custom_response(

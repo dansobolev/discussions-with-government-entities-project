@@ -5,6 +5,7 @@ from aiohttp import web
 from aiohttp_security import remember, forget, authorized_userid
 import aiohttp_jinja2
 
+from app.auth.permissions import get_current_user_permissions
 from app.db.models import UserPasswordResetLink
 from app.db.queries import get_user_by_login, create_user, \
     get_user_by_email, check_user_uniqueness, get_user_by_id, is_valid_user
@@ -68,6 +69,27 @@ async def login(request: web.Request) -> web.Response:
         response = web.json_response(UserSchema().dump(db_user))
         await remember(request, response, payload)
         return response
+
+
+@routes.post('/current-user')
+async def current_user(request: web.Request):
+    data = await request.json()
+    # TODO: fix
+    if 'discussion_id' not in data:
+        data['discussion_id'] = None
+    user_id = await authorized_userid(request)
+    user_db = await get_user_by_id(user_id)
+    if not user_db:
+        response = {'user_id': None}
+    else:
+        user_permissions = await get_current_user_permissions(user_id, context=data)
+        response = {
+            'user_id': str(user_db.id),
+            'login': user_db.login,
+            'email': user_db.email,
+            'permissions': user_permissions
+        }
+    return web.json_response(response)
 
 
 @routes.get('/logout')
