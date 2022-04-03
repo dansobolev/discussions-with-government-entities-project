@@ -11,8 +11,9 @@
 публикуется результат запроса.
 
 
-### Run project
+## Backend (Python + Aiohttp)
 #### Installing dependencies using Poetry:
+Install [Poetry](https://python-poetry.org) (if poetry is not installed yet)
     
     poetry shell
     poetry install
@@ -20,3 +21,18 @@
 #### To run server:
     
     poetry run python runserver.py
+
+By default, backend runs on **127.0.0.1:8080**
+
+## Frontend (React)
+#### Installing dependencies:
+Make sure you have [Node.js](https://nodejs.org/en/download/) pre-installed    
+
+    npm install
+
+#### Run front:
+    
+    npm start
+
+If you see no errors in the console, try to isit [127.0.0.1:3000](http://127.0.0.1:3000) 
+and test the application!
