@@ -5,7 +5,7 @@ description = ""
 authors = ["Daniil Sobolev <daniil.sob56@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 aiohttp = "^3.8.1"
 gino = "^1.0.1"
 alembic = "^1.7.6"
@@ -26,6 +26,7 @@ aiohttp-devtools = "^1.0.post0"
 aiohttp_cors = "^0.7.0"
 flake8 = "^4.0.1"
 aiohttp-apispec = "^2.2.3"
+typing-extensions = "^4.1.1"
 
 [tool.poetry.dev-dependencies]
 

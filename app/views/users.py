@@ -46,29 +46,23 @@ async def register(request: web.Request) -> web.Response:
         raise web.HTTPCreated
 
 
-@routes.get('/login', name='login')
 @routes.post('/login')
 async def login(request: web.Request) -> web.Response:
-    if request.method == 'GET':
-        forgot_password_url = request.app.router['password-reset-request'].url_for()
-        return aiohttp_jinja2.render_template('auth/login.html', request,
-                                              context={'forgot_password_url': forgot_password_url})
-    elif request.method == 'POST':
-        data = await request.json()
-        data = UserSchema(only=('login', 'password')).load_with_raise(data)
-        entity = data['login']
-        if entity.__contains__('@'):
-            db_user = await get_user_by_email(entity, raise_error=True)
-        else:
-            db_user = await get_user_by_login(entity, raise_error=True)
-        try:
-            check_hash(data['password'], db_user.password)
-        except CheckPasswordHashException:
-            raise web.HTTPUnauthorized
-        payload = str(db_user.id)
-        response = web.json_response(UserSchema().dump(db_user))
-        await remember(request, response, payload)
-        return response
+    data = await request.json()
+    data = UserSchema(only=('login', 'password')).load_with_raise(data)
+    entity = data['login']
+    if entity.__contains__('@'):
+        db_user = await get_user_by_email(entity, raise_error=True)
+    else:
+        db_user = await get_user_by_login(entity, raise_error=True)
+    try:
+        check_hash(data['password'], db_user.password)
+    except CheckPasswordHashException:
+        raise web.HTTPUnauthorized
+    payload = str(db_user.id)
+    response = web.json_response(UserSchema().dump(db_user))
+    await remember(request, response, payload)
+    return response
 
 
 @routes.post('/current-user')
