@@ -14,7 +14,7 @@ const Registration = () => {
     const registerNewUser = async () => {
         console.log('sending data');
         const resp = await httpClient.post(
-            "http://127.0.0.1:8080/register",
+            "//localhost:8080/register",
             {
                 firstname: registrationForm.firstname,
                 lastname: registrationForm.lastname,
@@ -22,7 +22,7 @@ const Registration = () => {
                 login: registrationForm.login,
                 phone_number: registrationForm.phone_number,
                 password: registrationForm.password,
-            }
+            },
         );
         console.log(resp.data);
         console.log(resp.status);

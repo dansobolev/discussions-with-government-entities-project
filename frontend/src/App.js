@@ -6,63 +6,48 @@ import DiscussionInvitation from './components/discussionInvitation';
 import axios from "axios";
 
 const App = () => {
-    const [user, setUser] = useState({"login": ""})
+    const [userLogin, setUserLogin] = useState(null);
+    const [userImage, setUserImage] = useState(null);
     const discussionName = 'Тестовая переписка';
 
-    // useEffect(() => {
-    //     (() => {
-    //         try {
-    //             const resp = httpClient.post(
-    //                 'http://127.0.0.1:8080/current-user', {}
-    //             );
-    //             setUser(resp.data.login);
-    //         } catch (error) {
-    //             console.log('Not authenticated');
-    //         }
-    //     })();
-    // }, []);
+    function getAllDiscussions () {
+        axios({
+            method: "GET",
+            url: "//localhost:8080/discussions/list",
+            withCredentials: true,
+        }).then((resp) => {
+            if (resp.status === 200) {
+                console.log(resp.data)
+            }
+        })
+    }
+
+    // TODO: send request before render!
     useEffect(() => {
         (() => {
             axios({
                 method: "POST",
-                url: "http://127.0.0.1:8080/current-user",
-                data: {}
+                url: "//localhost:8080/current-user",
+                data: {},
+                withCredentials: true,
             })
                 .then((resp) => {
                     if (resp.status === 200) {
-                        setUser(resp.data.login);
+                        setUserLogin(resp.data.login);
+                        setUserImage(resp.data.profile_image);
                     }
                 }).catch((error) => {
                     if (error.response) {
                         console.log(error.response)
                     }
                 })
+            getAllDiscussions();
         })();
     }, []);
-    // const getCurrentUser = () => {
-    //     axios({
-    //         method: "POST",
-    //         url: "http://127.0.0.1:8080/current-user",
-    //         data: {}
-    //     })
-    //         .then((resp) => {
-    //             if (resp.status === 200) {
-    //                 console.log(resp.data)
-    //                 setUser(resp.data.login);
-    //             }
-    //         }).catch((error) => {
-    //         if (error.response) {
-    //             console.log(error.response)
-    //         }
-    //     })
-    // }
-    // getCurrentUser()
 
-    // TODO: show current user information somewhere
-    // TODO: https://www.youtube.com/watch?v=sBw0O5YTT4Q  timing: 48:06
     return (
         <React.Fragment>
-            <NavBar currentUser={user} />
+            <NavBar currentUser={userLogin} currenUserImage={userImage} />
             <DiscussionName discussionName={discussionName} />
             <DiscussionMessage />
             <DiscussionInvitation />

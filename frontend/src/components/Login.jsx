@@ -10,8 +10,9 @@ const Login = () => {
     function logInUser(event) {
         axios({
             method: "POST",
-            url: "http://127.0.0.1:8080/login",
-            data: {login, password}
+            url: "//localhost:8080/login",
+            data: {login, password},
+            withCredentials: true,
         })
             .then((resp) => {
                 if (resp.status === 200) {
