@@ -10,19 +10,6 @@ const App = () => {
     const [userImage, setUserImage] = useState(null);
     const discussionName = 'Тестовая переписка';
 
-    function getAllDiscussions () {
-        axios({
-            method: "GET",
-            url: "//localhost:8080/discussions/list",
-            withCredentials: true,
-        }).then((resp) => {
-            if (resp.status === 200) {
-                console.log(resp.data)
-            }
-        })
-    }
-
-    // TODO: send request before render!
     useEffect(() => {
         (() => {
             axios({
@@ -41,7 +28,6 @@ const App = () => {
                         console.log(error.response)
                     }
                 })
-            getAllDiscussions();
         })();
     }, []);
 
