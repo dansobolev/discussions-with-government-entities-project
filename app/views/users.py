@@ -21,29 +21,25 @@ from app.exceptions import PasswordResetLinkNotFound, PasswordResetLinkExpired, 
 routes = web.RouteTableDef()
 
 
-@routes.get('/register')
 @routes.post('/register')
 async def register(request: web.Request) -> web.Response:
-    if request.method == 'GET':
-        return aiohttp_jinja2.render_template('auth/register.html', request, context={})
-    elif request.method == 'POST':
-        data = UserSchema().load_with_raise(await request.json())
-        login_ = data['login']
-        email_ = data['email']
-        existed_user = await check_user_uniqueness(login=login_, email=email_)
-        if existed_user:
-            raise UserAlreadyExistsException
+    data = UserSchema().load_with_raise(await request.json())
+    login_ = data['login']
+    email_ = data['email']
+    existed_user = await check_user_uniqueness(login=login_, email=email_)
+    if existed_user:
+        raise UserAlreadyExistsException
 
-        try:
-            hashed_password = generate_hash(data['password'])
-        except GeneratePasswordHashException:
-            # TODO handle properly
-            raise
-        else:
-            data.update({'password': hashed_password})
+    try:
+        hashed_password = generate_hash(data['password'])
+    except GeneratePasswordHashException:
+        # TODO handle properly
+        raise
+    else:
+        data.update({'password': hashed_password})
 
-        await create_user(**data)
-        raise web.HTTPCreated
+    await create_user(**data)
+    raise web.HTTPCreated
 
 
 @routes.post('/login')
