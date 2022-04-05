@@ -11,9 +11,9 @@ class DiscussionMessage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: 'Daniil Sobolev',
-            commentText: '@oleg, вы ненужную развязку строить задумали! Давайте это прекращать, ок?',
-            commentDate: '1 января 2022',
+            userName: props.data.author.login,
+            commentText: props.data.comment_text,
+            commentDate: props.data.created_at,
             commentImages: [],
         }
     }

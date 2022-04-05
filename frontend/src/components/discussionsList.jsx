@@ -10,11 +10,13 @@ const DiscussionList = (props) => {
         marginBottom: '5%',
     }
 
+    const discussionUrl = `/discussions/${item.id}`
+
     return (
         <div className="col-sm-6" style={discussionListStyles}>
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title"><a className="link-dark" href="#">{item.name}</a></h5>
+                    <h5 className="card-title"><a className="link-dark" href={discussionUrl}>{item.name}</a></h5>
                     <p className="card-text">Дата создания: {item.created_at}</p>
                     <p>Количество участников: TBD</p>
                 </div>
@@ -49,7 +51,7 @@ const DiscussionsList = () => {
             getDiscussionsList();
         })();
     }, []);
-    
+
     const all_items = [];
     for (const [index, value] of items.entries()) {
         all_items.push(<DiscussionList item={value} />)
