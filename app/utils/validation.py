@@ -87,7 +87,7 @@ class DiscussionSchema(Schema):
     def post_dump_discussion_entities_sort(self, item: Dict, **kwargs):
         comments = item.get('comments')
         add_mentions = item.get('user_mentions')
-        if not comments or not add_mentions:
+        if not comments and not add_mentions:
             return item
         list_ = comments + add_mentions
         list_ = sorted(list_, key=lambda d: d['created_at'])

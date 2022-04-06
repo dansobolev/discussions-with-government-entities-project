@@ -53,7 +53,7 @@ async def get_current_user_permissions(
             ProjectPermissions.PERM_PROJECT_DISCUSSION_READ,
         ])
         if discussion_id:
-            if await is_user_discussion_participant(user.id, discussion_id):
+            if await is_user_discussion_participant(user.id, discussion_id, raise_error=False):
                 permissions.extend([
                     ProjectPermissions.PERM_PROJECT_DISCUSSION_UPDATE
                 ])

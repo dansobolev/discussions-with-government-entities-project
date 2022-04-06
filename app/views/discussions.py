@@ -40,10 +40,10 @@ async def create_discussion(request: web.Request) -> web.Response:
     return web.json_response(response)
 
 
-@routes.get('/user-discussions/list', name='user-discussions')
+@routes.get('/{user_id}/discussions/list', name='user-discussions')
 @permissions_required(permissions=[ProjectPermissions.PERM_PROJECT_DISCUSSION_READ])
 async def get_user_discussions(request: web.Request) -> web.Response:
-    user_id = await authorized_userid(request)
+    user_id = request.match_info['user_id']
 
     user_discussions = db.select([
         Discussion.id

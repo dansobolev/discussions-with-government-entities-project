@@ -5,7 +5,10 @@ import anonymous_image from '../images/anonymous.jpg';
 // Stateless Functional Component
 const NavBar = (props) => {
     const userLogin = props.currentUser;
+    const userId = props.currentUserId;
     const profileImage = props.currenUserImage;
+
+    const userProfileUrl = `//localhost:3000/profiles/${userId}`
 
     return (
         <div>
@@ -20,7 +23,11 @@ const NavBar = (props) => {
                                 <div>
                                     {profileImage == null ?
                                         (
-                                            <img src={anonymous_image} width="45" height="45" alt=""/>
+                                            <div>
+                                                <a href={userProfileUrl}>
+                                                    <img src={anonymous_image} width="45" height="45" alt=""/>
+                                                </a>
+                                            </div>
                                         ) :
                                         (
                                             // TODO: user profile image

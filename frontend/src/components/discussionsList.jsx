@@ -27,6 +27,9 @@ const DiscussionList = (props) => {
 
 
 const DiscussionsList = () => {
+    const [userId, setUserId] = useState(null);
+    const [userLogin, setUserLogin] = useState(null);
+    const [userImage, setUserImage] = useState(null);
     const [items, setItems] = useState([]);
 
     function getDiscussionsList () {
@@ -46,20 +49,45 @@ const DiscussionsList = () => {
         })
     }
 
+    const getCurrentUser = () => {
+        axios({
+            method: "POST",
+            url: "//localhost:8080/current-user",
+            data: JSON.stringify({}),
+            withCredentials: true,
+        })
+            .then((resp) => {
+                if (resp.status === 200) {
+                    setUserId(resp.data.user_id);
+                    setUserLogin(resp.data.login);
+                    setUserImage(resp.data.profile_image);
+                }
+            }).catch((error) => {
+            if (error.response) {
+                console.log(error.response)
+            }
+        })
+    }
+
     useEffect(() => {
         (() => {
+            getCurrentUser();
             getDiscussionsList();
         })();
     }, []);
 
     const all_items = [];
     for (const [index, value] of items.entries()) {
-        all_items.push(<DiscussionList item={value} />)
+        all_items.push(<DiscussionList key={value.id} item={value} />)
     }
 
     return (
         <React.Fragment>
-            <NavBar />
+            <NavBar
+                currentUser={userLogin}
+                currentUserId={userId}
+                currenUserImage={userImage}
+            />
             <div className="row mt-4 mb-4 cont p-3">
                 {all_items}
             </div>
@@ -68,4 +96,4 @@ const DiscussionsList = () => {
     )
 }
 
-export default DiscussionsList;
+export { DiscussionsList, DiscussionList };
