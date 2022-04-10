@@ -81,6 +81,12 @@ const DiscussionsList = () => {
         all_items.push(<DiscussionList key={value.id} item={value} />)
     }
 
+    const containersStyles = {
+        marginTop: '2%',
+        marginLeft: '20%',
+        marginRight: '20%'
+    }
+
     return (
         <React.Fragment>
             <NavBar
@@ -88,7 +94,7 @@ const DiscussionsList = () => {
                 currentUserId={userId}
                 currenUserImage={userImage}
             />
-            <div className="row mt-4 mb-4 cont p-3">
+            <div className="row cont" style={containersStyles}>
                 {all_items}
             </div>
 

@@ -10,6 +10,8 @@
 при желании добавить нового участника в беседу (госслужащего или обычного гражданина). По окончании переписки
 публикуется результат запроса.
 
+![alt text](./client/src/images/demo.png)
+
 
 ## Backend (Python + Aiohttp)
 #### Installing dependencies using Poetry:
